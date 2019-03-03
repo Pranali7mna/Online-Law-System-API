@@ -1,6 +1,7 @@
 package com.project.OnlineLawSystemAPI.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -25,6 +26,16 @@ public class CourtServiceImpl implements ICourtService{
 	@Override
 	public Court saveCourt(@Valid Court court) {
 		return courtDao.save(court);
+	}
+
+	@Override
+	public Optional<Court> fetchCourtById(String id) {
+		return courtDao.findById(id);
+	}
+
+	@Override
+	public List<Court> searchCourt(String term) {
+		return courtDao.searchCourt(term.toUpperCase());
 	}
 
 }

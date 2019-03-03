@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.OnlineLawSystemAPI.model.Lawyer;
@@ -26,6 +27,12 @@ public class LawyerController {
 	@GetMapping
 	public ResponseEntity<List<Lawyer>> fetchAllLawyers(){
 		List<Lawyer> lawyer=lawyerService.fetchAllLawyers();
+		return new ResponseEntity<List<Lawyer>>(lawyer, HttpStatus.OK);
+	}
+	
+	@GetMapping("/search")
+	public ResponseEntity<List<Lawyer>> searchLawyer(@RequestParam String term){
+		List<Lawyer> lawyer=lawyerService.searchLawyer(term);
 		return new ResponseEntity<List<Lawyer>>(lawyer, HttpStatus.OK);
 	}
 

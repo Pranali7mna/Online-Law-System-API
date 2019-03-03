@@ -12,4 +12,6 @@ public interface ILawyerService {
 
 	List<Lawyer> fetchAllLawyers();
 
+	List<Lawyer> searchLawyer(String term);
+
 }

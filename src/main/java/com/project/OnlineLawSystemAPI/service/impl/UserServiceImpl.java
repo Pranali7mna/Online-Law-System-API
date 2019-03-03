@@ -24,10 +24,10 @@ public class UserServiceImpl implements IUserService{
 			if(user!=null) {
 				return user;
 			}else {
-				return null;
+				throw new RuntimeException("Wrong Credentials, please check it and try again");
 			}
 		}else {
-			return null;
+			throw new RuntimeException("User not found, please check it and try again");
 		}
 	}
 
